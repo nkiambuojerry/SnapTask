@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AddTask = () => {
   const [name, setName] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const addTask = () => {
     axios.post('https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks', { name })
-      .then(() => history.push('/'))
+      .then(() => navigate.push('/'))
       .catch(error => console.error(error));
   };
 

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const UpdateTask = () => {
   const { id } = useParams();
   const [name, setName] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks/${id}`)
@@ -15,7 +15,7 @@ const UpdateTask = () => {
 
   const updateTask = () => {
     axios.put(`https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks/${id}`, { name })
-      .then(() => history.push('/'))
+      .then(() => navigate.push('/'))
       .catch(error => console.error(error));
   };
 
