@@ -8,13 +8,13 @@ const UpdateTask = () => {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get(`/api/tasks/${id}`)
+    axios.get(`https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks/${id}`)
       .then(response => setName(response.data.name))
       .catch(error => console.error(error));
   }, [id]);
 
   const updateTask = () => {
-    axios.put(`/api/tasks/${id}`, { name })
+    axios.put(`https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks/${id}`, { name })
       .then(() => history.push('/'))
       .catch(error => console.error(error));
   };

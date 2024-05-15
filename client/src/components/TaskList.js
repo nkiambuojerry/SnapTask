@@ -6,13 +6,13 @@ const TaskList = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/tasks')
+    axios.get('https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks')
       .then(response => setTasks(response.data))
       .catch(error => console.error(error));
   }, []);
 
   const deleteTask = (id) => {
-    axios.delete(`/api/tasks/${id}`)
+    axios.delete(`https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks/${id}`)
       .then(() => setTasks(tasks.filter(task => task._id !== id)))
       .catch(error => console.error(error));
   };

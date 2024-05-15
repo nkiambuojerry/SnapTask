@@ -7,7 +7,7 @@ const AddTask = () => {
   const history = useHistory();
 
   const addTask = () => {
-    axios.post('/api/tasks', { name })
+    axios.post('https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks', { name })
       .then(() => history.push('/'))
       .catch(error => console.error(error));
   };
