@@ -5,6 +5,7 @@ import AddTask from './components/AddTask';
 import UpdateTask from './components/UpdateTask';
 
 const App = () => {
+  console.log('App component rendered');
   return (
     <Router>
       <div>

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
 
+  console.log('TaskList component rendered');
+
   useEffect(() => {
     axios.get('https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks')
       .then(response => setTasks(response.data))
