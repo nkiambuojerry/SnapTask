@@ -8,7 +8,7 @@ const AddTask = () => {
 
   const addTask = () => {
     axios.post('https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks', { name })
-      .then(() => navigate.push('/'))
+      .then(() => navigate('/'))
       .catch(error => console.error(error));
   };
 

@@ -15,7 +15,7 @@ const UpdateTask = () => {
 
   const updateTask = () => {
     axios.put(`https://snaptask-backend-f3a26c6f6c97.herokuapp.com/api/tasks/${id}`, { name })
-      .then(() => navigate.push('/'))
+      .then(() => navigate('/'))
       .catch(error => console.error(error));
   };
 
