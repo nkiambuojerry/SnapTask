@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 const UpdateTask = () => {
   const { id } = useParams();
