@@ -36,8 +36,14 @@ function DrawerAppBar(props) {
     };
     const navigate = useNavigate()
 
+    React.useEffect(() => {
+        if(localStorage.getItem('userCode')){
+            setUserCode(localStorage.getItem('userCode'))
+        }
+    }, [])
+
     const drawer = (
-        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', }}>
+        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
             <UserIdentity open={open} userCode={userCode} setOpen={setOpen} setUserCode={setUserCode} />
             <IconButton
                 size="large"
@@ -65,8 +71,8 @@ function DrawerAppBar(props) {
                         </ListItemButton>
                     </>
                 ))}
-                <Button key='User' variant="contained" sx={{ marginLeft: 2, margin: 2 }} onClick={() => { }}>
-                    Add User
+                <Button key='User' variant="contained" sx={{ marginLeft: 2, margin: 2 }} onClick={() => setOpen(true)}>
+                    Manage User
                 </Button>
             </List>
         </Box>
@@ -111,7 +117,7 @@ function DrawerAppBar(props) {
                             </Button>
                         ))}
                         <Button key='User' variant="contained" sx={{ marginLeft: 2, margin: 2 }} onClick={() => setOpen(true)}>
-                            Manage User
+                            Manage User 1
                         </Button>
                     </Box>
                 </Toolbar>

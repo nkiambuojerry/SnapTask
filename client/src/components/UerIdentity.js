@@ -14,10 +14,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function UserIdentity({ open, userCode, setOpen, setUserCode }) {
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
     const handleClose = () => {
         setOpen(false);
     };
@@ -34,9 +30,6 @@ export default function UserIdentity({ open, userCode, setOpen, setUserCode }) {
 
     return (
         <React.Fragment>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Slide in alert dialog
-            </Button>
             <Dialog
                 open={open}
                 TransitionComponent={Transition}

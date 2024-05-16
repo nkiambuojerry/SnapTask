@@ -5,9 +5,7 @@
 }
 
 .section__container {
-  max-width: var(--max-width);
-  padding: 5rem 4rem;
-  height: 89vh;
+  padding:0rem 2rem;
   background-color: #f8bbd0;
 }
 
@@ -39,8 +37,21 @@
   color: '#757575'
 }
 
+@media (width < 786px) {
+  .section__container {
+    min-width: 40rem;
+    height: 135vh;
+  }
+}
 
 @media (width > 768px) {
+  .section__container {
+    max-width: var(--max-width);
+    padding: 5rem 4rem;
+    height: 89vh;
+    background-color: #f8bbd0;
+  }
+
   nav {
     position: static;
     padding-block: 2rem 0;
@@ -77,13 +88,5 @@
 
   .header__image {
     grid-area: 1/2/2/3;
-  }
-
-  .header__content {
-    text-align: left;
-  }
-
-  .header__btns {
-    justify-content: flex-start;
   }
 }
