@@ -1,50 +1,36 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
 const cors = require('cors');
-
+const Task = require("./model/taskModel.js");
+const taskRoute = require("./routes/taskRoute.js");
 const app = express();
-const port = process.env.PORT || 5000;
 
-app.use(cors());
+// middleware
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use(cors());
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+// routes
+app.use("/api/tasks", taskRoute);
+
+
+
+
+app.get("/", (req, res) => {
+  res.send("Hello from Node API Server Updated");
 });
 
-const taskSchema = new mongoose.Schema({
-  name: String,
-});
 
-const Task = mongoose.model('Task', taskSchema);
-
-app.get('/api/tasks', async (req, res) => {
-  const tasks = await Task.find();
-  res.json(tasks);
-});
-
-app.get('/api/tasks/:id', async (req, res) => {
-  const task = await Task.findById(req.params.id);
-  res.json(task);
-});
-
-app.post('/api/tasks', async (req, res) => {
-  const newTask = new Task(req.body);
-  await newTask.save();
-  res.json(newTask);
-});
-
-app.put('/api/tasks/:id', async (req, res) => {
-  const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  res.json(updatedTask);
-});
-
-app.delete('/api/tasks/:id', async (req, res) => {
-  await Task.findByIdAndDelete(req.params.id);
-  res.json({ message: 'Task deleted' });
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+mongoose
+  .connect(
+    "mongodb+srv://basit1:basit123@cluster0.9voj9be.mongodb.net/"
+  )
+  .then(() => {
+    console.log("Connected to database!");
+    app.listen(3001, () => {
+      console.log("Server is running on port 3000");
+    });
+  })
+  .catch(() => {
+    console.log("Connection failed!");
+  });
